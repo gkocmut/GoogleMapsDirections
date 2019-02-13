@@ -2,7 +2,7 @@ package com.multimeleon.android.googlemapsdirections;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -62,8 +62,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+
+
+
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(46.591425, 15.665779))
+                .title("Porche Maribor Šentiljska")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(46.569046, 15.836213))
+                .title("Porche Maribor Šentiljska")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(46.541233, 15.863968))
+                .title("Štajerska hiša kulinarike - Gočovski dvorec")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+
         setupGoogleMapScreenSettings(googleMap);
-        DirectionsResult results = getDirectionsDetails("483 George St, Sydney NSW 2000, Australia","182 Church St, Parramatta NSW 2150, Australia",TravelMode.DRIVING);
+        DirectionsResult results = getDirectionsDetails("Ob Dravi 6, 2000 Maribor,Slovenia","Dragovič 36a, 2256 Juršinci,Slovenia",TravelMode.DRIVING);
         if (results != null) {
             addPolyline(results, googleMap);
             positionCamera(results.routes[overview], googleMap);
@@ -91,7 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void positionCamera(DirectionsRoute route, GoogleMap mMap) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(route.legs[overview].startLocation.lat, route.legs[overview].startLocation.lng), 12));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(route.legs[overview].startLocation.lat, route.legs[overview].startLocation.lng), 10));
     }
 
     private void addPolyline(DirectionsResult results, GoogleMap mMap) {
