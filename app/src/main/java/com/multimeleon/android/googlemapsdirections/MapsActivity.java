@@ -2,12 +2,13 @@ package com.multimeleon.android.googlemapsdirections;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -24,6 +25,12 @@ import org.joda.time.DateTime;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+
+
+
+
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -61,7 +68,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
 
 
 
@@ -106,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void addMarkersToMap(DirectionsResult results, GoogleMap mMap) {
         mMap.addMarker(new MarkerOptions().position(new LatLng(results.routes[overview].legs[overview].startLocation.lat,results.routes[overview].legs[overview].startLocation.lng)).title(results.routes[overview].legs[overview].startAddress));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(results.routes[overview].legs[overview].endLocation.lat,results.routes[overview].legs[overview].endLocation.lng)).title(results.routes[overview].legs[overview].startAddress).snippet(getEndLocationTitle(results)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(results.routes[overview].legs[overview].endLocation.lat,results.routes[overview].legs[overview].endLocation.lng)).title(results.routes[overview].legs[overview].endAddress).snippet(getEndLocationTitle(results)));
     }
 
     private void positionCamera(DirectionsRoute route, GoogleMap mMap) {
